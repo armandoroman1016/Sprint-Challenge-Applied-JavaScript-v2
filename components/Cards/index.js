@@ -22,13 +22,13 @@ const cardsContainer = document.querySelector('.cards-container')
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then(data => {
-        console.log('all data: ',data)
         const articles = data.data.articles
+
         const articlesArr = []
         articlesArr.push(articles.bootstrap, articles.javascript, articles.jquery, articles.node, articles.technology)
+
         const allArticles = []
         articlesArr.forEach(subject => subject.forEach(article =>{ allArticles.push(article)}))
-        // console.log(allArticles)
 
         class Articles {
             constructor(article) {
@@ -46,17 +46,6 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .catch(error => {
         console.log(error)
     })
-
-
-// <div class="card">
-//   <div class="headline">{Headline of article}</div>
-//   <div class="author">
-//     <div class="img-container">
-//       <img src={url of authors image} />
-//     </div>
-//     <span>By {authors name}</span>
-//   </div>
-// </div>
 
 function createCard(obj) {
     const card = document.createElement('div')
@@ -83,31 +72,3 @@ function createCard(obj) {
 
     return card
 }
-
-
-// axios.get('https://api.github.com/users/armandoroman1016/followers')
-//     .then(data => {
-//         let followersArr = data.data
-//         console.log('followers arr; ', followersArr)
-//         class Followers {
-//             constructor(follower) {
-//                 axios.get(`https://api.github.com/users/${follower.login}`)
-//                     .then(data => {
-//                         this.location = data.data.location
-//                         this.profile = data.data.html_url
-//                         this.followers = data.data.followers
-//                         this.following = data.data.following
-//                         this.bio = data.data.bio
-//                         this.avatar = data.data.avatar_url
-//                         this.handle = data.data.login
-//                         this.name = data.data.name
-
-//                         // const newFollower = createGithubCard(this)
-//                         // cards.appendChild(newFollower);
-//                     })
-//             }
-//         }
-
-//         // const updatedFollowers = followersArr.map(follower => new Followers(follower))
-//     })
-
